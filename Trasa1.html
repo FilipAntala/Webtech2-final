@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Geocoding service</title>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <link rel="stylesheet" type ="text/css" href="styly.css">
+  </head>
+  <body>
+    <div id="info-panel">
+    </div>
+    <div id="floating-panel">
+      Zadaj miesto štart: <input id="address" type="textbox" > <br>
+      Zobraz moju polohu: <input id="address1" type="textbox" > 
+      <button onclick="getLocation()">Získaj súradnice mojej polohy</button><br>
+      Zadajte miesto cieľa: <input id="address2" type="textbox" >
+      <script>
+        var x=document.getElementById("address1");
+        function getLocation() {
+          if (navigator.geolocation) {
+              navigator.geolocation.getCurrentPosition(showPosition);   
+          } 
+        }
+   
+        function showPosition(position) {
+          x.value = position.coords.latitude +", "+ position.coords.longitude;      
+        }           
+         
+      </script>  
+      <form action="/action_page.php">
+        <input type="radio" id="1" name="sposob" > Pešo
+        <input type="radio" id="2" name="sposob" checked> Autom<br>
+        <br><input id="submit" type="button" value="Zobraz trasu">
+      </div>
+      <div id="map">
+      </div>
+     <script>
+     
+      function initMap() {  
+        var directionsService = new google.maps.DirectionsService;
+        var directionsDisplay = new google.maps.DirectionsRenderer;
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 8,
+          center: {lat: 49, lng: 18}
+        });  
+        var geocoder = new google.maps.Geocoder();
+        document.getElementById('submit').addEventListener('click', function() {
+          geocodeAddress(geocoder, map);
+        }); 
+        
+        directionsDisplay.setMap(map);
+        directionsDisplay.setPanel(document.getElementById('info-panel'));
+        
+        var onChangeHandler = function() {
+          calculateAndDisplayRoute(directionsService, directionsDisplay);
+        };
+        
+        document.getElementById('address').addEventListener('change', onChangeHandler);
+        document.getElementById('address2').addEventListener('change', onChangeHandler);
+      }
+      
+        
+      function geocodeAddress(geocoder, resultsMap) { 
+        var address = document.getElementById('address').value;
+        var address2 = document.getElementById('address2').value;  
+        geocoder.geocode({'address': address}, function(results, status) {
+        if (status === 'OK') {
+          resultsMap.setZoom(12);
+          resultsMap.setCenter(results[0].geometry.location);
+        } else {
+          alert('Geocode was not successful for the following reason: ' + status);
+          }
+        });    
+      }
+      
+      function calculateAndDisplayRoute(directionsService, directionsDisplay) { 
+        var state= 'DRIVING';
+        if (document.getElementById("1").checked ==true)
+          var state= 'WALKING';
+        else
+          var state= 'DRIVING';
+        console.log(state); 
+           
+        a=  document.getElementById('address1').value;
+        if(a=="")
+          a=document.getElementById('address2').value;
+        else
+          a=  document.getElementById('address1').value;
+        
+        directionsService.route({
+          origin: document.getElementById('address').value,
+          waypoints: [{location: a}],
+          destination: document.getElementById('address2').value,
+          travelMode: state
+        }, function(response, status) {
+          if (status === 'OK') {
+            directionsDisplay.setDirections(response);
+          } 
+        });
+        state= '';
+      }
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBg-sSzElcKO4xdcLqyOXE4A2cLpMAMFSY&callback=initMap">
+    </script>
+  </body>
+</html>
