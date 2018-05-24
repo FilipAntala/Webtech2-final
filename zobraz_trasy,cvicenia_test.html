@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>testovanie vyberu tras</title>
+</head>
+<body>
+<div id="content">
+    <label>Moje trasy<table id="moje">
+        <tr><th>nazov</th><th>mod</th><th>autor</th><th>start</th><th>ciel</th><th>vytvorene</th></tr>
+    </table></label><br>
+    <label>Verejne trasy<table id="verejne">
+        <tr><th>nazov</th><th>mod</th><th>autor</th><th>start</th><th>ciel</th><th>vytvorene</th></tr>
+    </table></label><br>
+    <label>cvicenia pre trasu<table id="cvicenia">
+
+    </table></label>
+</div>
+<script>
+    var source;
+
+    var user="email57@gmail.com";
+    var trasy_moje=document.getElementById("moje");
+    var trasy_verejne=document.getElementById("verejne");
+
+    var trasa_url = "trasa_get.php?user="+user;
+
+    console.log(trasa_url);
+    if (typeof(EventSource) === "undefined") {
+        document.getElementById("content").innerHTML = "Sorry, your browser does not support server-sent events...";
+    } else {
+        if (source) source.removeEventListener("message", listen1);
+        source = new EventSource(trasa_url);
+       source.onmessage=function listen1(e){
+
+            var data = JSON.parse(e.data);
+            console.log(data);
+            //console.log(data.length);
+            for(var i=0;i<data.length;i++){
+                if (data[i]['vlastna']==1)var row=trasy_moje.insertRow();
+               else if (data[i]['vlastna']==0)var row=trasy_verejne.insertRow();
+                row.insertCell().innerHTML=data[i]['nazov'];
+                row.insertCell().innerHTML=data[i]['mod'];
+                row.insertCell().innerHTML=data[i]['autor'];
+                row.insertCell().innerHTML=data[i]['start'];
+                row.insertCell().innerHTML=data[i]['ciel'];
+                row.insertCell().innerHTML=data[i]['vytvorene'];
+                row.setAttribute("name",data[i]['id']);
+                row.onclick=function(){
+                    trasa_click(this);
+                }
+
+
+            }
+        }
+
+    }
+    var source2;
+    var cvicenia=document.getElementById("cvicenia");
+    function trasa_click(trasa_row) {
+       if (source2) {
+           console.log(source2);
+          source2.close();
+           console.log(source2);
+        }
+        var trasaId = trasa_row.getAttribute("name");
+        var cvicenie_url = "cvicenie_get.php?trasa=" + trasaId;
+
+        cvicenia.innerHTML = "<tr><th>id</th><th>trasa</th><th>osoba</th><th>start trasi</th><th>ciel trasi</th><th>start cvicenia</th><th>ciel cvicenia</th><th>zaciatok</th><th>koniec</th><th>vzdialenost</th><th>cas</th></tr>";
+        if (typeof(EventSource) === "undefined") {
+            document.getElementById("content").innerHTML = "Sorry, your browser does not support server-sent events...";
+        } else {
+            source2 = new EventSource(cvicenie_url);
+            source2.onmessage = function listen2(e) {
+
+                var data = JSON.parse(e.data);
+                console.log(data);
+                console.log(data.length);
+                for (var i = 0; i < data.length; i++) {
+                    var row = cvicenia.insertRow();
+                    console.log(data[i]);
+
+                    row.insertCell().innerHTML=data[i]['id'];
+                    row.insertCell().innerHTML=data[i]['trasa'];
+                    row.insertCell().innerHTML=data[i]['osoba'];
+                    row.insertCell().innerHTML=data[i]['trasa_start'];
+                    row.insertCell().innerHTML=data[i]['trasa_ciel'];
+                    row.insertCell().innerHTML=data[i]['cvicenie_start'];
+                    row.insertCell().innerHTML=data[i]['cvicenie_ciel'];
+                    row.insertCell().innerHTML=data[i]['zaciatok'];
+                    row.insertCell().innerHTML=data[i]['koniec'];
+                    }
+
+
+
+            }
+
+
+        }
+    }
+
+
+</script>
+</body>
+</html>
