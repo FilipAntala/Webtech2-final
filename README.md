@@ -10,7 +10,7 @@ TODO:
 
 
 Done:
--Registrácia
--insert trás, výber trás
+- Registrácia
+- insert trás, výber trás
 -
 -
