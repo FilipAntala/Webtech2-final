@@ -35,7 +35,7 @@ $password = hash('sha512',$password);
 $val = 0;
 $type = 1; // 1 = user, 2 = admin
 
-$query = "insert into USER_TABLE (email,pass,type,valid,hash) values ('$email','$password','$type','$val','$hash')";
+$query = "insert into ".USER_TABLE." (email,pass,type,valid,hash) values ('$email','$password','$type','$val','$hash')";
 
 $result = $db->query($query) or die(mysqli_error($db));
 if($result){
@@ -66,10 +66,10 @@ var_dump( mail($to, $subject, $message, $headers)); // Send our email
 } else {
 	echo "Chyba";
 }
-
+header("Location:index.php");
 ?>
 <br><br><br>
-<a href="javascript:history.back()">Back</a>
+//<a href="javascript:history.back()">Back</a>
 </div></div>
 </body>
 </html>
