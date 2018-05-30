@@ -19,9 +19,55 @@
     </style>
   </head>
   <body>
+  <header>
+      <?php
+      include('config.php');
+      session_start();
+      $db = new PDO("mysql:host=".DB_HOSTNAME.";dbname=".DB_DATABASE,DB_USERNAME, DB_PASSWORD);
+      $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+      $db->exec("set names utf8");
+
+      if(isset($_POST["logout"])) {
+          session_unset();
+          header("Location:index.php");
+      }
+      else if(isset($_SESSION["email"])){
+            $email=$_SESSION["email"];
+            echo'
+            <form method="post" >
+            <label>Pouzivatel: '.$_SESSION["email"].'</label>
+      <button type="submit" name="logout">Odhlasit</button>
+      </form>';
+            }
+            else if(isset($_POST['login'])){
+          $user=$_POST['email'];
+          $heslo=$_POST['heslo'];
+          $stmt = $db->query("select * from ".USER_TABLE." where email='$user'");
+          $item = $stmt->fetch(PDO::FETCH_ASSOC);
+          $hash = hash('sha512',$heslo);
+          $pass=$item['pass'];
+          if(strcmp($hash,$pass))echo "ok";
+          $_SESSION['email']=$user;
+                header("Location:index.php");
+         // echo $password."<br>";
+          //echo hash('sha512',$heslo)."<br>";
+
+
+
+      }else echo '
+      <form method="post">
+          <label>Email:<input type="text" name="email" required></label>
+          <label>Heslo:<input type="password" name="heslo"></label>
+          <input type="submit" value="prihlasit" name="login">
+          <button title="registrovat noveho pouzivatela" formaction="registracia.html">registrovat</button>
+      </form>
+      
+      ';
+      ?>
+  </header>
     <div id="map"></div>
         <?php
-     include('config.php');
+
 $servername = DB_HOSTNAME;
 $username = DB_USERNAME;
 $password = DB_PASSWORD;
@@ -34,7 +80,7 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 } 
 
- $sql = "SELECT * FROM user";
+ $sql = "SELECT * FROM User";
 $result = $conn->query($sql);
  $IDs=array();
   $Menos=array();
