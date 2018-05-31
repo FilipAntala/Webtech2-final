@@ -33,10 +33,19 @@ if(!empty($_POST['pass'])){
 
 $password = hash('sha512',$password);
 $val = 0;
-$type = 1; // 1 = user, 2 = admin
+$type = 1; // 1 = user, 2 = 
 
 
-$query = "insert into ".USER_TABLE." (email,pass,type,valid,hash) values ('$email','$password','$type','$val','$hash')";    
+$priezvisko = $_POST['priezvisko'];
+$meno = $_POST['meno'];
+$skola = $_POST['skola'];
+$skola_adresa = $_POST['skola_adresa'];
+$bydlisko_u = $_POST['bydlisko_u'];
+$psc = $_POST['psc'];
+$bydlisko_o = $_POST['bydlisko_o'];
+
+$query = "insert into ".USER_TABLE." (priezvisko,meno,email,type,pass,valid,hash, stredna, stredna_adresa, bydlisko_ulica, psc, bydlisko_obec) values ('$priezvisko','$meno','$email','$password','$type','$val','$hash','$skola','$skola_adresa','$bydlisko_u','$psc','$bydlisko_o')";
+
 
 $result = $db->query($query) or die(mysqli_error($db));
 if($result){
