@@ -35,6 +35,7 @@ $password = hash('sha512',$password);
 $val = 0;
 $type = 1; // 1 = user, 2 = 
 
+
 $priezvisko = $_POST['priezvisko'];
 $meno = $_POST['meno'];
 $skola = $_POST['skola'];
@@ -43,7 +44,8 @@ $bydlisko_u = $_POST['bydlisko_u'];
 $psc = $_POST['psc'];
 $bydlisko_o = $_POST['bydlisko_o'];
 
-$query = "insert into USER_TABLE (priezvisko,meno,email,type,pass,valid,hash, stredna, stredna_adresa, bydlisko_ulica, psc, bydlisko_obec) values ('$priezvisko','$meno','$email','$password','$type','$val','$hash','$skola','$skola_adresa','$bydlisko_u','$psc','$bydlisko_o')";
+$query = "insert into ".USER_TABLE." (priezvisko,meno,email,type,pass,valid,hash, stredna, stredna_adresa, bydlisko_ulica, psc, bydlisko_obec) values ('$priezvisko','$meno','$email','$password','$type','$val','$hash','$skola','$skola_adresa','$bydlisko_u','$psc','$bydlisko_o')";
+
 
 $result = $db->query($query) or die(mysqli_error($db));
 if($result){
@@ -74,10 +76,10 @@ var_dump( mail($to, $subject, $message, $headers)); // Send our email
 } else {
 	echo "Chyba";
 }
-
+header("Location:index.php");
 ?>
 <br><br><br>
-<a href="javascript:history.back()">Back</a>
+//<a href="javascript:history.back()">Back</a>
 </div></div>
 </body>
 </html>
