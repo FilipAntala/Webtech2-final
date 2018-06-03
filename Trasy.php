@@ -193,7 +193,7 @@ $conn->close();
 
 
       function initMap() {
-      console.log(  "<?php echo $CielCvicenia[$k]; ?>");
+       
         var directionsService = new google.maps.DirectionsService;   
         var directionsDisplay1 = new google.maps.DirectionsRenderer({
     polylineOptions: {
@@ -355,13 +355,13 @@ $conn->close();
                     calculateAndDisplayRoute20(directionsService, directionsDisplay20);
         
         
-       
+    
       document.getElementById('prepinanie').addEventListener("click", function (e){
-          
-     poc2=poc2+1
+
+     poc2=poc2+1;
      poc=poc+1; 
      if (poc><?php echo $i; ?>){
-          poc=0;
+          
           location.reload();
           } 
       console.log(poc); 
@@ -962,7 +962,7 @@ $conn->close();
       
       
      }  
-  
+          
        function rob(){
            
           
@@ -1188,6 +1188,8 @@ $conn->close();
               btn2.appendChild(t);
                document.getElementById("myDIV1").appendChild(btn2);
               document.getElementById("myDIV1").removeChild(document.getElementById("myDIV1").childNodes[0]);
+              
+              
               }
    
       function spat(){
@@ -1214,8 +1216,9 @@ $conn->close();
            poc21=0;
            poc22=0;
            poc23=0;
-             poc2=poc2-1;
-            poc=poc-1;
+            poc=0;
+             poc2=0;
+            
              initMap();
              
       }
@@ -1239,7 +1242,7 @@ $conn->close();
         directionsService.route({
            origin: "<?php echo $Starts[0]; ?>",
      
-           waypoints: [{location: "<?php for ($u=0;$u<$k;$u++){ if ($IdTrasy[$u]==1) echo $CielCvicenia[$IdTrasy[$u]]; }?>"}],
+           waypoints: [{location: "<?php for ($u=0;$u<$k;$u++){ if ($IdTrasy[$u]==1){ echo $CielCvicenia[$IdTrasy[$u]]; break;}}?>"}],
           destination: "<?php echo $Ciels[0]; ?>",
           travelMode: 'DRIVING'
         }, function(response, status) {
@@ -1270,7 +1273,7 @@ $conn->close();
             if(poc4==2){
         directionsService.route({
           origin: "<?php echo $Starts[1]; ?>",
-          waypoints: [{location: "<?php for ($u=0;$u<$k;$u++){ if ($IdTrasy[$u]==1) echo $CielCvicenia[$IdTrasy[$u]]; }?>"}],
+          waypoints: [{location: "<?php for ($u=0;$u<$k;$u++){ if ($IdTrasy[$u]==2) { echo $CielCvicenia[$IdTrasy[$u]]; break;}}?>"}],
           destination: "<?php echo $Ciels[1]; ?>",
           travelMode: 'DRIVING'
         }, function(response, status) {
@@ -1300,7 +1303,7 @@ $conn->close();
         if(poc5==2){      
         directionsService.route({
         origin: "<?php echo $Starts[2]; ?>",
-         waypoints: [{location: "<?php echo $CielCvicenia[2]; ?>"}],
+          waypoints: [{location: "<?php for ($u=0;$u<$k;$u++){ if ($IdTrasy[$u]==3){ echo $CielCvicenia[$IdTrasy[$u]]; break;} }?>"}],
           destination: "<?php echo $Ciels[2]; ?>",
           travelMode: 'DRIVING'
         }, function(response, status) {
@@ -1329,7 +1332,7 @@ $conn->close();
         if(poc6==2){ 
         directionsService.route({
           origin: "<?php echo $Starts[3]; ?>",
-           waypoints: [{location: "<?php echo $CielCvicenia[3]; ?>"}],
+            waypoints: [{location: "<?php for ($u=0;$u<$k;$u++){ if ($IdTrasy[$u]==4){ echo $CielCvicenia[$IdTrasy[$u]]; break;} }?>"}],
           destination: "<?php echo $Ciels[3]; ?>",
           travelMode: 'DRIVING'
         }, function(response, status) {
@@ -1360,7 +1363,7 @@ $conn->close();
               if(poc7==2){ 
         directionsService.route({
           origin: "<?php echo $Starts[4]; ?>",
-           waypoints: [{location: "<?php echo $CielCvicenia[4]; ?>"}],
+           waypoints: [{location: "<?php for ($u=0;$u<$k;$u++){ if ($IdTrasy[$u]==5) { echo $CielCvicenia[$IdTrasy[$u]]; break;} }?>"}],
           destination: "<?php echo $Ciels[4]; ?>",
           travelMode: 'DRIVING'
         }, function(response, status) {
@@ -1388,7 +1391,7 @@ $conn->close();
                 if(poc8==2){ 
         directionsService.route({
          origin: "<?php echo $Starts[5]; ?>",
-          waypoints: [{location: "<?php echo $CielCvicenia[5]; ?>"}],
+           waypoints: [{location: "<?php for ($u=0;$u<$k;$u++){ if ($IdTrasy[$u]==6) { echo $CielCvicenia[$IdTrasy[$u]]; break;}}?>"}],
           destination: "<?php echo $Ciels[5]; ?>",
           travelMode: 'DRIVING'
         }, function(response, status) {
@@ -1416,7 +1419,7 @@ $conn->close();
                  if(poc9==2){
         directionsService.route({
         origin: "<?php echo $Starts[6]; ?>",
-         waypoints: [{location: "<?php echo $CielCvicenia[6]; ?>"}],
+         waypoints: [{location: "<?php for ($u=0;$u<$k;$u++){ if ($IdTrasy[$u]==7) { echo $CielCvicenia[$IdTrasy[$u]]; break;} }?>"}],
           destination: "<?php echo $Ciels[6]; ?>",
           travelMode: 'DRIVING'
         }, function(response, status) {
@@ -1444,7 +1447,7 @@ $conn->close();
                   if(poc10==2){
         directionsService.route({
           origin: "<?php echo $Starts[7]; ?>",
-           waypoints: [{location: "<?php echo $CielCvicenia[7]; ?>"}],
+           waypoints: [{location: "<?php for ($u=0;$u<$k;$u++){ if ($IdTrasy[$u]==8){ echo $CielCvicenia[$IdTrasy[$u]]; break;}}?>"}],
           destination: "<?php echo $Ciels[7]; ?>",
           travelMode: 'DRIVING'
         }, function(response, status) {
@@ -1472,7 +1475,7 @@ $conn->close();
                 if(poc11==2){
         directionsService.route({
          origin: "<?php echo $Starts[8]; ?>",
-          waypoints: [{location: "<?php echo $CielCvicenia[8]; ?>"}],
+          waypoints: [{location: "<?php for ($u=0;$u<$k;$u++){ if ($IdTrasy[$u]==9) { echo $CielCvicenia[$IdTrasy[$u]]; break;}}?>"}],
           destination: "<?php echo $Ciels[8]; ?>",
           travelMode: 'DRIVING'
         }, function(response, status) {
@@ -1500,7 +1503,7 @@ $conn->close();
                 if(poc12==2){
         directionsService.route({
          origin: "<?php echo $Starts[9]; ?>",
-          waypoints: [{location: "<?php echo $CielCvicenia[9]; ?>"}],
+           waypoints: [{location: "<?php for ($u=0;$u<$k;$u++){ if ($IdTrasy[$u]==10){ echo $CielCvicenia[$IdTrasy[$u]]; break;} }?>"}],
           destination: "<?php echo $Ciels[9]; ?>",
           travelMode: 'DRIVING'
         }, function(response, status) {
@@ -1528,7 +1531,7 @@ $conn->close();
             if(poc13==2){
         directionsService.route({
           origin: "<?php echo $Starts[10]; ?>",
-           waypoints: [{location: "<?php echo $CielCvicenia[10]; ?>"}],
+            waypoints: [{location: "<?php for ($u=0;$u<$k;$u++){ if ($IdTrasy[$u]==11){ echo $CielCvicenia[$IdTrasy[$u]]; break;}}?>"}],
           destination: "<?php echo $Ciels[10]; ?>",
           travelMode: 'DRIVING'
         }, function(response, status) {
@@ -1557,7 +1560,7 @@ $conn->close();
             if(poc14==2){
         directionsService.route({
            origin: "<?php echo $Starts[11]; ?>",
-            waypoints: [{location: "<?php echo $CielCvicenia[11]; ?>"}],
+             waypoints: [{location: "<?php for ($u=0;$u<$k;$u++){ if ($IdTrasy[$u]==12){ echo $CielCvicenia[$IdTrasy[$u]]; break;} }?>"}],
           destination: "<?php echo $Ciels[11]; ?>",
           travelMode: 'DRIVING'
         }, function(response, status) {
@@ -1587,7 +1590,7 @@ $conn->close();
                if(poc15==2){
         directionsService.route({
            origin: "<?php echo $Starts[12]; ?>",
-            waypoints: [{location: "<?php echo $CielCvicenia[12]; ?>"}],
+            waypoints: [{location: "<?php for ($u=0;$u<$k;$u++){ if ($IdTrasy[$u]==13){ echo $CielCvicenia[$IdTrasy[$u]]; break;}}?>"}],
           destination: "<?php echo $Ciels[12]; ?>",
           travelMode: 'DRIVING'
         }, function(response, status) {
@@ -1618,7 +1621,7 @@ $conn->close();
              if(poc16==2){
         directionsService.route({
            origin: "<?php echo $Starts[13]; ?>",
-            waypoints: [{location: "<?php echo $CielCvicenia[13]; ?>"}],
+            waypoints: [{location: "<?php for ($u=0;$u<$k;$u++){ if ($IdTrasy[$u]==14) { echo $CielCvicenia[$IdTrasy[$u]]; break;} }?>"}],
           destination: "<?php echo $Ciels[13]; ?>",
           travelMode: 'DRIVING'
         }, function(response, status) {
@@ -1646,7 +1649,7 @@ $conn->close();
              if(poc17==2){
         directionsService.route({
            origin: "<?php echo $Starts[14]; ?>",
-            waypoints: [{location: "<?php echo $CielCvicenia[14]; ?>"}],
+             waypoints: [{location: "<?php for ($u=0;$u<$k;$u++){ if ($IdTrasy[$u]==15) { echo $CielCvicenia[$IdTrasy[$u]]; break;} }?>"}],
           destination: "<?php echo $Ciels[14]; ?>",
           travelMode: 'DRIVING'
         }, function(response, status) {
@@ -1674,7 +1677,7 @@ $conn->close();
                 if(poc18==2){
         directionsService.route({
          origin: "<?php echo $Starts[15]; ?>",
-          waypoints: [{location: "<?php echo $CielCvicenia[15]; ?>"}],
+           waypoints: [{location: "<?php for ($u=0;$u<$k;$u++){ if ($IdTrasy[$u]==16) { echo $CielCvicenia[$IdTrasy[$u]]; break;}}?>"}],
           destination: "<?php echo $Ciels[15]; ?>",
           travelMode: 'DRIVING'
         }, function(response, status) {
@@ -1702,7 +1705,7 @@ $conn->close();
                if(poc19==2){
         directionsService.route({
            origin: "<?php echo $Starts[16]; ?>",
-            waypoints: [{location: "<?php echo $CielCvicenia[16]; ?>"}],
+             waypoints: [{location: "<?php for ($u=0;$u<$k;$u++){ if ($IdTrasy[$u]==17){ echo $CielCvicenia[$IdTrasy[$u]]; break;} }?>"}],
           destination: "<?php echo $Ciels[16]; ?>",
           travelMode: 'DRIVING'
         }, function(response, status) {
@@ -1730,7 +1733,7 @@ $conn->close();
                  if(poc20==2){
         directionsService.route({
            origin: "<?php echo $Starts[17]; ?>",
-            waypoints: [{location: "<?php echo $CielCvicenia[17]; ?>"}],
+            waypoints: [{location: "<?php for ($u=0;$u<$k;$u++){ if ($IdTrasy[$u]==18){ echo $CielCvicenia[$IdTrasy[$u]]; break;}}?>"}],
           destination: "<?php echo $Ciels[17]; ?>",
           travelMode: 'DRIVING'
         }, function(response, status) {
@@ -1758,7 +1761,7 @@ $conn->close();
                 if(poc21==2){
         directionsService.route({
            origin: "<?php echo $Starts[18]; ?>",
-            waypoints: [{location: "<?php echo $CielCvicenia[18]; ?>"}],
+            waypoints: [{location: "<?php for ($u=0;$u<$k;$u++){ if ($IdTrasy[$u]==19){ echo $CielCvicenia[$IdTrasy[$u]]; break;}}?>"}],
           destination: "<?php echo $Ciels[18]; ?>",
           travelMode: 'DRIVING'
         }, function(response, status) {
@@ -1786,7 +1789,7 @@ $conn->close();
                  if(poc22==2){
         directionsService.route({
             origin: "<?php echo $Starts[19]; ?>",
-             waypoints: [{location: "<?php echo $CielCvicenia[19]; ?>"}],
+            waypoints: [{location: "<?php for ($u=0;$u<$k;$u++){ if ($IdTrasy[$u]==20){ echo $CielCvicenia[$IdTrasy[$u]]; break;} }?>"}],
           destination: "<?php echo $Ciels[19]; ?>",
           travelMode: 'DRIVING'
         }, function(response, status) {
@@ -1801,7 +1804,7 @@ $conn->close();
     </script>
  <script async defer
  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBg-sSzElcKO4xdcLqyOXE4A2cLpMAMFSY&callback=initMap">
- 
+      
     </script>   
      
    
