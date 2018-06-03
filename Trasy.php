@@ -1217,7 +1217,7 @@ $conn->close();
            poc22=0;
            poc23=0;
             poc=0;
-             poc2=poc2-1;
+             poc2=0;
             
              initMap();
              
