@@ -1,7 +1,7 @@
 <?php
 define("DB_HOSTNAME", "localhost");
 define("DB_USERNAME", "root");
-define("DB_PASSWORD", "heslo123");
+define("DB_PASSWORD", "Drobec1551");
 define("DB_DATABASE", "projekt");
 // mena tabuliek
 define ("USER_TABLE","user");

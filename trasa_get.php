@@ -23,12 +23,14 @@ if (isset($_GET['user'])) {
     }
     $mylastId = 0;
     $publicLastId = 0;
-    $stmt = $db->query("select * from ".USER_TABLE." where email='$user'");
+    $q="select * from ".USER_TABLE." where email='$user'";
+    //echo $q."<br>";
+    $stmt = $db->query($q);
     $item = $stmt->fetch(PDO::FETCH_ASSOC);
     $userStatus=$item['type'];
     $userId=$item['id'];
     $userEmail=$item['email'];
-    //echo json_encode($item);
+    //echo json_encode($item)."<br>";
     while (true) {
 
         $data=array();
