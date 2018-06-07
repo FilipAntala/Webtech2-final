@@ -33,16 +33,21 @@
       p{margin-left:40%;}
       #prepinanie {
         margin-left:75%;
-      }            
+      }  
+       #zobraz {
+          margin-left:75%;
+      }           
     </style>
   </head>
   <body>
       <h2 >Trasy</h2> 
+      
       <p id="nazov"></p>
       <p id="autor"></p>
       <p id="start"></p>
       <p id="ciel"></p>
       <p id="mod"></p>
+         <br><a id="zobraz" href="AdminTabulka.php?sort=id">Späť na tabuľku všetkých trás<a>
        <p id="vytvorene"></p>
    <div id="prepinanie">
       
@@ -160,7 +165,7 @@ for($j=$i;$j<20;$j++){
 } 
   
   
-  
+ $IDtrasy=$_GET['trasa'];
 
 $conn->close();
     ?>
@@ -190,8 +195,11 @@ $conn->close();
            var poc21=0;
            var poc22=0;
            var poc23=0;
-
-
+           
+           if ("<?php echo $IDtrasy; ?>">0){                  
+             poc=<?php echo $IDtrasy; ?>-1;
+             poc2=<?php echo $IDtrasy; ?>-1;
+             }                          
       function initMap() {
        
         var directionsService = new google.maps.DirectionsService;   
@@ -362,7 +370,7 @@ $conn->close();
      poc=poc+1; 
      if (poc><?php echo $i; ?>){
           
-          location.reload();
+          window.location.href = 'Trasy.php'; 
           } 
       console.log(poc); 
       
@@ -953,7 +961,7 @@ $conn->close();
                });
               directionsDisplay20.setMap(map);
               break; 
-          //case Count database:  php refresh
+          
           
       }
          console.log(<?php echo $i; ?>);
@@ -1217,9 +1225,11 @@ $conn->close();
            poc22=0;
            poc23=0;
             poc=0;
-             poc2=0;
-            
-             initMap();
+             poc2=0; 
+               
+                  window.location.href = 'Trasy.php';                        
+                   
+             
              
       }
    
@@ -1540,7 +1550,7 @@ $conn->close();
           } 
         });
         }    
-        
+         
         
       }
       
@@ -1807,6 +1817,6 @@ $conn->close();
       
     </script>   
      
-   
+  
   </body>
 </html>

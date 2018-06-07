@@ -1,3 +1,34 @@
+  <!DOCTYPE html>
+<html lang="sk">
+<html>
+  <head>
+  <meta charset="UTF-8">   
+  <link rel="stylesheet" type="text/css" href="styly.css">  
+  <title>Tabulka tras</title>
+        <style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+         #zobraz {
+          margin-left:20%;
+      }   
+      
+        #zobraz1 {
+          margin-left:15%;
+      }   
+        #tabulka {
+          margin-left:15%;
+      }        
+      
+      h1 {
+         margin-left:45%;
+      }     
+   
+    </style>
+  
+  </head>
+  <body>  
+  
+
 <?php
   include('config.php');
 $servername = DB_HOSTNAME;
@@ -42,8 +73,8 @@ if ($result->num_rows > 0) {
      
     $i=$i+1;    
     }
- echo "<h1>Trasa $Trasa - tréningy<h1>";
-echo "<table border=\"1\">";
+ echo "<h1>Trasa $Trasa - tréningy</h1>";
+echo "<table id=\"tabulka\" border=\"1\">";
  echo "<thead><tr><th>id tréningu </th><th>Dosiahnutý cieľ</th>";
  echo "<th>Dátum a čas začiatku tréningu</th><th>Dátum a čas konca tréningu</th><th>Dátum a čas pridania tréningu</th></tr> </thead>";
  
@@ -62,5 +93,9 @@ $conn->close();
 
 
 
-
-?>
+  echo   "<br><a id=\"zobraz1\" href=\"Trasy.php?trasa=$TrasaID\">Zobraz trasu na mape (najprv je potrebné trasu aktivovať)<a>";
+?> 
+  <a id="zobraz" href="AdminTabulka.php?sort=id">Späť na tabuľku všetkých trás<a>
+  
+</body>
+</html>
