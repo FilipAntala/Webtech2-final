@@ -4,7 +4,23 @@
   <head>
   <meta charset="UTF-8">   
   <link rel="stylesheet" type="text/css" href="styly.css">  
-  <title>Zadanie 2</title>
+  <title>Tabulka administratora</title>
+        <style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+  
+      #zobraz {
+          margin-left:55%;
+      }   
+        #tabulka {
+          margin-left:15%;
+      }        
+      
+      h1 {
+         margin-left:45%;
+      }     
+    </style>
+  
   </head>
   <body>  
    <h1>Všetky trasy</h1>
@@ -24,16 +40,16 @@ $conn->set_charset("utf8");
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 } 
-
-
- echo "<table border=\"1\">";
+  
+  echo "<table id=\"tabulka\" border=\"1\">";
  echo "<thead><tr><th>id</th><th>Názov trasy<a href=\"AdminTabulka.php?sort=nazov\">&#171</a><a href=\"AdminTabulka.php?sort=nazov2\">&#187</a></th>";
  echo "<th>Autor<a href=\"AdminTabulka.php?sort=autor\">&#171</a><a href=\"AdminTabulka.php?sort=autor2\">&#187</a></th>"; 
  echo "<th>Súradnice štartu trasy<a href=\"AdminTabulka.php?sort=start\">&#171</a><a href=\"AdminTabulka.php?sort=start2\">&#187</a></th>";  
   echo "<th>Súradnice cieľa trasy<a href=\"AdminTabulka.php?sort=ciel\">&#171</a><a href=\"AdminTabulka.php?sort=ciel2\">&#187</a></th>"; 
    echo "<th>Mód<a href=\"AdminTabulka.php?sort=mod\">&#171</a><a href=\"AdminTabulka.php?sort=mod2\">&#187</a></th>"; 
     echo "<th>Dátum a čas vytvorenia<a href=\"AdminTabulka.php?sort=cas\">&#171</a><a href=\"AdminTabulka.php?sort=cas2\">&#187</a></th> </tr> </thead>";
- 
+  
+   if ($_GET['sort'] == 'id')
  $sql = "SELECT a.id, a.nazov,b.meno,b.priezvisko, a.start, a.ciel, a.mod, a.vytvorene from trasa a join user b on a.autor = b.id  "; 
   
   if ($_GET['sort'] == 'nazov')
@@ -104,7 +120,9 @@ if ($conn->connect_error) {
   
         if ($_GET['sort'] == 'cas2')
 {
-   $sql = "SELECT a.id, a.nazov,b.meno,b.priezvisko, a.start, a.ciel, a.mod, a.vytvorene from trasa a join user b on a.autor = b.id  order by a.vytvotene ASC"; 
+
+
+   $sql = "SELECT a.id, a.nazov,b.meno,b.priezvisko, a.start, a.ciel, a.mod, a.vytvorene from trasa a join user b on a.autor = b.id  order by a.vytvorene DESC"; 
    
      }   
      
@@ -155,7 +173,7 @@ $conn->close();
 
 
 ?>
-
+ <br><a id="zobraz" href="Trasy.php">Zobraz všetky trasy na mape<a>
 </body>
 </html>
   
