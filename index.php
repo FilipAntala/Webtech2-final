@@ -213,7 +213,7 @@ function test_input($data) {
        for(var k=0;k<<?php echo $i; ?>;k++){   
            
          
-        
+      if(k>55){  
                    
         var geocoder = new google.maps.Geocoder(); 
         
@@ -275,7 +275,7 @@ function test_input($data) {
    
 });  
 
- 
+      }
   }
 }
                         
