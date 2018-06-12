@@ -1032,7 +1032,7 @@ $conn->close();
             directionsDisplay5=  directionsDisplay;
             directionsDisplay5.setOptions({
                   polylineOptions: {
-                  strokeColor: 'brown',
+                  strokeColor: 'green',
                   }
                });
             directionsDisplay5.setMap(map);
@@ -1042,7 +1042,7 @@ $conn->close();
             directionsDisplay6=  directionsDisplay;
             directionsDisplay6.setOptions({
                   polylineOptions: {
-                  strokeColor: 'black',
+                  strokeColor: 'yellow',
                   }
                });
             directionsDisplay6.setMap(map);
@@ -1052,7 +1052,7 @@ $conn->close();
             directionsDisplay7=  directionsDisplay;
             directionsDisplay7.setOptions({
                   polylineOptions: {
-                  strokeColor: 'purple',
+                  strokeColor: 'red',
                   }
                });
             directionsDisplay7.setMap(map);
@@ -1062,7 +1062,7 @@ $conn->close();
             directionsDisplay8=  directionsDisplay;
             directionsDisplay8.setOptions({
                   polylineOptions: {
-                  strokeColor: 'pink',
+                  strokeColor: 'green',
                   }
                });
             directionsDisplay8.setMap(map);
@@ -1082,7 +1082,7 @@ $conn->close();
             directionsDisplay10=  directionsDisplay;
             directionsDisplay10.setOptions({
                   polylineOptions: {
-                  strokeColor: 'red',
+                  strokeColor: 'orange',
                   }
                });
             directionsDisplay10.setMap(map);
@@ -1122,7 +1122,7 @@ $conn->close();
             directionsDisplay14=  directionsDisplay;
             directionsDisplay14.setOptions({
                   polylineOptions: {
-                  strokeColor: 'brown',
+                  strokeColor: 'green',
                   }
                });
             directionsDisplay14.setMap(map);
@@ -1132,7 +1132,7 @@ $conn->close();
             directionsDisplay15=  directionsDisplay;
             directionsDisplay15.setOptions({
                   polylineOptions: {
-                  strokeColor: 'black',
+                  strokeColor: 'red',
                   }
                });
             directionsDisplay15.setMap(map);
@@ -1142,7 +1142,7 @@ $conn->close();
             directionsDisplay16=  directionsDisplay;
             directionsDisplay16.setOptions({
                   polylineOptions: {
-                  strokeColor: 'purple',
+                  strokeColor: 'yellow',
                   }
                });
             directionsDisplay16.setMap(map);
@@ -1152,7 +1152,7 @@ $conn->close();
             directionsDisplay17=  directionsDisplay;
             directionsDisplay17.setOptions({
                   polylineOptions: {
-                  strokeColor: 'pink',
+                  strokeColor: 'orange',
                   }
                });
             directionsDisplay17.setMap(map);
@@ -1182,7 +1182,7 @@ $conn->close();
             directionsDisplay20=  directionsDisplay;
             directionsDisplay20.setOptions({
                   polylineOptions: {
-                  strokeColor: 'purple',
+                  strokeColor: 'yellow',
                   }
                });
             directionsDisplay20.setMap(map);

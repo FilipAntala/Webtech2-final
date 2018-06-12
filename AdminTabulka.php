@@ -50,71 +50,71 @@ if ($conn->connect_error) {
     echo "<th>Dátum a čas vytvorenia<a href=\"AdminTabulka.php?sort=cas\">&#171</a><a href=\"AdminTabulka.php?sort=cas2\">&#187</a></th> </tr> </thead>";
   
    if ($_GET['sort'] == 'id')
- $sql = "SELECT a.id, a.nazov,b.meno,b.priezvisko, a.start, a.ciel, a.mod, a.vytvorene from trasa a join user b on a.autor = b.id  "; 
+ $sql = "SELECT a.id, a.nazov,b.meno,b.priezvisko,b.email, a.start, a.ciel, a.mod, a.vytvorene from trasa a join user b on a.autor = b.id  "; 
   
   if ($_GET['sort'] == 'nazov')
 {
-   $sql = "SELECT a.id, a.nazov,b.meno,b.priezvisko, a.start, a.ciel, a.mod, a.vytvorene from trasa a join user b on a.autor = b.id  order by a.nazov DESC"; 
+   $sql = "SELECT a.id, a.nazov,b.meno,b.priezvisko,b.email, a.start, a.ciel, a.mod, a.vytvorene from trasa a join user b on a.autor = b.id  order by a.nazov DESC"; 
    
      }
  
   if ($_GET['sort'] == 'nazov2')
 {
-   $sql = "SELECT a.id, a.nazov,b.meno,b.priezvisko, a.start, a.ciel, a.mod, a.vytvorene from trasa a join user b on a.autor = b.id  order by a.nazov ASC"; 
+   $sql = "SELECT a.id, a.nazov,b.meno,b.priezvisko,b.email, a.start, a.ciel, a.mod, a.vytvorene from trasa a join user b on a.autor = b.id  order by a.nazov ASC"; 
    
      }    
  
    if ($_GET['sort'] == 'autor')
 {
-   $sql = "SELECT a.id, a.nazov,b.meno,b.priezvisko, a.start, a.ciel, a.mod, a.vytvorene from trasa a join user b on a.autor = b.id  order by b.meno DESC, b.priezvisko DESC"; 
+   $sql = "SELECT a.id, a.nazov,b.meno,b.priezvisko,b.email, a.start, a.ciel, a.mod, a.vytvorene from trasa a join user b on a.autor = b.id  order by b.meno DESC, b.priezvisko DESC"; 
    
      }
      
      if ($_GET['sort'] == 'autor2')
 {
-   $sql = "SELECT a.id, a.nazov,b.meno,b.priezvisko, a.start, a.ciel, a.mod, a.vytvorene from trasa a join user b on a.autor = b.id  order by b.meno ASC, b.priezvisko DESC"; 
+   $sql = "SELECT a.id, a.nazov,b.meno,b.priezvisko,b.email, a.start, a.ciel, a.mod, a.vytvorene from trasa a join user b on a.autor = b.id  order by b.meno ASC, b.priezvisko DESC"; 
    
      }
  
       if ($_GET['sort'] == 'start')
 {
-   $sql = "SELECT a.id, a.nazov,b.meno,b.priezvisko, a.start, a.ciel, a.mod, a.vytvorene from trasa a join user b on a.autor = b.id  order by a.start DESC"; 
+   $sql = "SELECT a.id, a.nazov,b.meno,b.priezvisko,b.email, a.start, a.ciel, a.mod, a.vytvorene from trasa a join user b on a.autor = b.id  order by a.start DESC"; 
    
      }
   
         if ($_GET['sort'] == 'start2')
 {
-   $sql = "SELECT a.id, a.nazov,b.meno,b.priezvisko, a.start, a.ciel, a.mod, a.vytvorene from trasa a join user b on a.autor = b.id  order by a.start ASC"; 
+   $sql = "SELECT a.id, a.nazov,b.meno,b.priezvisko,b.email, a.start, a.ciel, a.mod, a.vytvorene from trasa a join user b on a.autor = b.id  order by a.start ASC"; 
    
      }
    
          if ($_GET['sort'] == 'ciel')
 {
-   $sql = "SELECT a.id, a.nazov,b.meno,b.priezvisko, a.start, a.ciel, a.mod, a.vytvorene from trasa a join user b on a.autor = b.id  order by a.ciel DESC"; 
+   $sql = "SELECT a.id, a.nazov,b.meno,b.priezvisko,b.email, a.start, a.ciel, a.mod, a.vytvorene from trasa a join user b on a.autor = b.id  order by a.ciel DESC"; 
    
      }
   
         if ($_GET['sort'] == 'ciel2')
 {
-   $sql = "SELECT a.id, a.nazov,b.meno,b.priezvisko, a.start, a.ciel, a.mod, a.vytvorene from trasa a join user b on a.autor = b.id  order by a.ciel ASC"; 
+   $sql = "SELECT a.id, a.nazov,b.meno,b.priezvisko,b.email, a.start, a.ciel, a.mod, a.vytvorene from trasa a join user b on a.autor = b.id  order by a.ciel ASC"; 
    
      }  
      
        if ($_GET['sort'] == 'mod')
 {
-   $sql = "SELECT a.id, a.nazov,b.meno,b.priezvisko, a.start, a.ciel, a.mod, a.vytvorene from trasa a join user b on a.autor = b.id  order by a.mod DESC"; 
+   $sql = "SELECT a.id, a.nazov,b.meno,b.priezvisko,b.email, a.start, a.ciel, a.mod, a.vytvorene from trasa a join user b on a.autor = b.id  order by a.mod DESC"; 
    
      }
   
         if ($_GET['sort'] == 'mod2')
 {
-   $sql = "SELECT a.id, a.nazov,b.meno,b.priezvisko, a.start, a.ciel, a.mod, a.vytvorene from trasa a join user b on a.autor = b.id  order by a.mod ASC"; 
+   $sql = "SELECT a.id, a.nazov,b.meno,b.priezvisko,b.email, a.start, a.ciel, a.mod, a.vytvorene from trasa a join user b on a.autor = b.id  order by a.mod ASC"; 
    
      }    
      
        if ($_GET['sort'] == 'cas')
 {
-   $sql = "SELECT a.id, a.nazov,b.meno,b.priezvisko, a.start, a.ciel, a.mod, a.vytvorene from trasa a join user b on a.autor = b.id  order by a.vytvorene DESC"; 
+   $sql = "SELECT a.id, a.nazov,b.meno,b.priezvisko,b.email, a.start, a.ciel, a.mod, a.vytvorene from trasa a join user b on a.autor = b.id  order by a.vytvorene DESC"; 
    
      }
   
@@ -122,7 +122,7 @@ if ($conn->connect_error) {
 {
 
 
-   $sql = "SELECT a.id, a.nazov,b.meno,b.priezvisko, a.start, a.ciel, a.mod, a.vytvorene from trasa a join user b on a.autor = b.id  order by a.vytvorene DESC"; 
+   $sql = "SELECT a.id, a.nazov,b.meno,b.priezvisko,b.email, a.start, a.ciel, a.mod, a.vytvorene from trasa a join user b on a.autor = b.id  order by a.vytvorene ASC"; 
    
      }   
      
@@ -137,6 +137,8 @@ $result = $conn->query($sql);
         $Vytvorenes=array();
           $Menos=array();
         $Priezviskos=array();
+        $Mails=array();
+        
     $i=0;    
     
 
@@ -151,6 +153,7 @@ if ($result->num_rows > 0) {
     $Mods[$i]=$row["mod"];
      $Starts[$i]=$row["start"];
       $Ciels[$i]=$row["ciel"];
+      $Mails[$i]=$row["email"];
         $Vytvorenes[$i]=$row["vytvorene"];
         if($Mods[$i]==1) 
                $Mody[$i]="private"; 
@@ -158,7 +161,7 @@ if ($result->num_rows > 0) {
                $Mody[$i]="public"; 
          if($Mods[$i]==3) 
                $Mody[$i]="stafeta"; 
-       echo "<tr><td>" .$IDs[$i]. "</td><td>" . "<a href=\"TrasyTabulka.php?cvicenie=$IDs[$i]\">$Nazovs[$i]</a>" . "</td><td>" . $Menos[$i]." ".$Priezviskos[$i]."</td><td>" . $Starts[$i]."</td><td>" . $Ciels[$i]. "</td><td>" .$Mody[$i] ."</td><td>" . $Vytvorenes[$i]."</td></tr>"; 
+       echo "<tr><td>" .$IDs[$i]. "</td><td>" . "<a href=\"TrasyTabulka.php?cvicenie=$IDs[$i]\">$Nazovs[$i]</a>" . "</td><td>" ."<a href=\"userTabulka.php?trasy=$Mails[$i]\">$Menos[$i]  $Priezviskos[$i]</a>" ."</td><td>" . $Starts[$i]."</td><td>" . $Ciels[$i]. "</td><td>" .$Mody[$i] ."</td><td>" . $Vytvorenes[$i]."</td></tr>"; 
     $i=$i+1;    
     }
 } else {
