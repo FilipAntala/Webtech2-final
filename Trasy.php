@@ -16,6 +16,10 @@
         margin: 0;
         padding: 0;
       }
+      
+       #zobraz2 {
+          margin-left:75%;
+      }  
       #floating-panel {
         position: absolute;
         top: 10px;
@@ -41,23 +45,12 @@
   </head>
   <body>
       <h2 >Trasy</h2> 
-      
-      <p id="nazov"></p>
+     <p id="nazov"></p>
       <p id="autor"></p>
       <p id="start"></p>
       <p id="ciel"></p>
-      <p id="mod"></p>
-         <br><a id="zobraz" href="AdminTabulka.php?sort=id">Späť na tabuľku všetkých trás<a>
-       <p id="vytvorene"></p>
-   <div id="prepinanie">
-      
-<img src="next.png"  height="60" width="120">
-   </div>
-     <div id="myDIV1"></div>
-    
-
-     <div id="myDIV3"></div>
-    <div id="map"></div>
+      <p id="mod"></p>  
+     
     
     <?php
      include('config.php');
@@ -73,9 +66,9 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 } 
 
- $sql = "SELECT a.nazov,b.meno,b.priezvisko, a.mod, a.start, a.ciel,a.vytvorene from trasa a join user b on a.autor = b.id ";
+ $sql = "SELECT b.type, a.nazov,b.meno,b.priezvisko, a.mod, a.start, a.ciel,a.vytvorene from trasa a join user b on a.autor = b.id ";
 $result = $conn->query($sql);
-
+  $Admintest=0;
   $Nazovs=array();
    $Autors=array();
     $Mods=array();
@@ -88,7 +81,7 @@ $result = $conn->query($sql);
 if ($result->num_rows > 0) {
     // output data of each row
     while($row = $result->fetch_assoc()) {
-
+       $Admintest=$row["type"];
       $Nazovs[$i]=$row["nazov"];
    $Menos[$i]=$row["meno"];
     $Priezviskos[$i]=$row["priezvisko"];
@@ -168,8 +161,21 @@ for($j=$i;$j<20;$j++){
  $IDtrasy=$_GET['trasa'];
 
 $conn->close();
+  if($Admintest==2)
+      echo "<br><a id=\"zobraz\" href=\"AdminTabulka.php?sort=id\">Späť na tabuľku všetkých trás</a>";
     ?>
+     
+     <a id="zobraz2" href="index.php">Späť na hlavnú stránku<a>
+       <p id="vytvorene"></p>
+   <div id="prepinanie">
+      
+<img src="next.png"  height="60" width="120">
+   </div>
+     <div id="myDIV1"></div>
     
+
+     <div id="myDIV3"></div>
+    <div id="map"></div>
     <script>
           var poc=0;
           

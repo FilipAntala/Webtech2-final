@@ -10,7 +10,7 @@
        * element that contains the map. */
   
       #zobraz {
-          margin-left:55%;
+          margin-left:25%;
       }   
         #tabulka {
           margin-left:15%;
@@ -18,6 +18,10 @@
       
       h1 {
          margin-left:45%;
+      }  
+      
+           #zobraz2 {
+          margin-left:25%;
       }     
     </style>
   
@@ -26,14 +30,11 @@
    <h1>Všetky trasy</h1>
 
 <?php
-
-
 include('config.php');
 $servername = DB_HOSTNAME;
 $username = DB_USERNAME;
 $password = DB_PASSWORD;
 $dbname = DB_DATABASE;
-
 $conn = new mysqli($servername, $username, $password, $dbname);
 $conn->set_charset("utf8");
 // Check connection
@@ -120,13 +121,10 @@ if ($conn->connect_error) {
   
         if ($_GET['sort'] == 'cas2')
 {
-
-
    $sql = "SELECT a.id, a.nazov,b.meno,b.priezvisko,b.email, a.start, a.ciel, a.mod, a.vytvorene from trasa a join user b on a.autor = b.id  order by a.vytvorene ASC"; 
    
      }   
      
-
 $result = $conn->query($sql);
     $IDs=array();
   $Nazovs=array();
@@ -141,7 +139,6 @@ $result = $conn->query($sql);
         
     $i=0;    
     
-
    $Mody=array();
 if ($result->num_rows > 0) {
     // output data of each row
@@ -169,14 +166,8 @@ if ($result->num_rows > 0) {
 }
 echo "</table>";
 $conn->close();
-
-
-
-
-
-
 ?>
- <br><a id="zobraz" href="Trasy.php">Zobraz všetky trasy na mape<a>
+ <br><a id="zobraz" href="Trasy.php">Zobraz všetky trasy na mape</a>
+ <a id="zobraz2" href="index.php">Späť na hlavnú stránku</a>
 </body>
 </html>
-  

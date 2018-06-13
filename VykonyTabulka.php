@@ -12,7 +12,9 @@
            #zobraz {
           margin-left:70%;
       }   
-      
+        #zobraz2 {
+          margin-left:25%;
+      }  
         
         #tabulka {
           margin:1%;
@@ -84,16 +86,17 @@ if ($conn->connect_error) {
     echo "<th>GPS súradnice konca tréningu</th>"; 
      echo "<th>subjektívne hodnotenie tréningu</th>";
      echo "<th>poznámka</th>";
-     echo "<th>priemerná rýchlosť na tréningu v km/h</th></tr> </thead>";
+     echo "<th>priemerná rýchlosť na tréningu v km/h</th>";
+     echo "<th>Zobraz trasu na mape</th></tr> </thead>";
    
-   
-$sql = "SELECT  a.id, a.nazov, c.pridane, c.zaciatok, c.koniec, c.start as GPSstart,c.ciel as GPSciel from trasa a join user b on a.autor = b.id join cvicenie c  on a.id=c.trasa_id where b.email=\"$userMail\" "; 
+$sql = "SELECT  b.type, a.id, a.nazov, c.pridane, c.zaciatok, c.koniec, c.start as GPSstart,c.ciel as GPSciel from trasa a join user b on a.autor = b.id join cvicenie c  on a.id=c.trasa_id where b.email=\"$userMail\" "; 
   
 
      
 
 $result = $conn->query($sql);
     $IDs=array();
+    $Admintest=0;
     $Nazovtrasy=array();
   $Odjazdenekm=array();
    $Dentreningu=array();
@@ -120,8 +123,9 @@ if ($result->num_rows > 0) {
     // output data of each row
     while($row = $result->fetch_assoc()) {
        $IDs[$i]=$row["id"];
+       
       $Nazovtrasy[$i]=$row["nazov"];
-   
+     $Admintest=$row["type"];
     $Dentreningu[$i]=$row["pridane"];
     $Caszactrening[$i]=$row["zaciatok"];
      $Caskontrening[$i]=$row["koniec"];
@@ -174,7 +178,7 @@ if ($result->num_rows > 0) {
         
       
        
-       echo "<tr><td>" .$IDs[$i]. "</td><td>" .$Nazovtrasy[$i] . "</td><td>" . $Odjazdenekm[$i]."</td><td>". $Dentreningu[$i]."</td><td>" . $Caszactrening[$i]."</td><td>" .  $Caskontrening[$i]. "</td><td>" .$GPSzactrening[$i] ."</td><td>" . $GPSkonctrening[$i]."</td><td>" .$Hodnotenie[$i]."</td><td>" .$Poznamka[$i]."</td><td>" . $Priemernarychlost[$i]."</td></tr>"; 
+       echo "<tr><td>" .$IDs[$i]. "</td><td>" .$Nazovtrasy[$i] . "</td><td>" . $Odjazdenekm[$i]."</td><td>". $Dentreningu[$i]."</td><td>" . $Caszactrening[$i]."</td><td>" .  $Caskontrening[$i]. "</td><td>" .$GPSzactrening[$i] ."</td><td>" . $GPSkonctrening[$i]."</td><td>" .$Hodnotenie[$i]."</td><td>" .$Poznamka[$i]."</td><td>" . $Priemernarychlost[$i]."</td><td>" .  "<a href=\"Trasy.php?trasa=$IDs[$i]\">Zobraz trasu na mape (najprv je potrebné trasu aktivovať)</a>" ."</td></tr>"; 
     $i=$i+1;    
     }
 } else {
@@ -186,10 +190,13 @@ $conn->close();
 
 
 
-
+ if($Admintest==2)
+    echo " <br><a id=\"zobraz\" href=\"AdminTabulka.php?sort=id\">Späť na tabuľku všetkých trás</a>";
+ 
+    
 
 ?>
- <br><a id="zobraz" href="AdminTabulka.php?sort=id">Späť na tabuľku všetkých trás</a>
+      <a id="zobraz2" href="index.php">Späť na hlavnú stránku<a>
 </body>
 </html>
   
