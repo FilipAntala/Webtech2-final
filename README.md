@@ -3,10 +3,7 @@ repozitár pre finálne zadanie z predmetu Webtech2 2018
 
 
 TODO:
-- fix tréningy (teams)
-- prihlasovanie
-- prepojenia tabuliek
-
+- zobrazovanie na mape - fix
 
 
 DONE:
@@ -14,3 +11,6 @@ DONE:
 - insert trás, výber trás
 - zobrazovanie trás
 - tabulky
+- prihlasovanie
+- fix tréningy (teams)
+- prepojenia tabuliek
