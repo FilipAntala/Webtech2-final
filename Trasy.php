@@ -66,7 +66,7 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 } 
 
- $sql = "SELECT b.type, a.nazov,b.meno,b.priezvisko, a.mod, a.start, a.ciel,a.vytvorene from trasa a join user b on a.autor = b.id ";
+ $sql = "SELECT b.type, a.nazov,b.meno,b.priezvisko, a.mod, a.start, a.ciel,a.vytvorene from trasa a join  ".USER_TABLE." b on a.autor = b.id ";
 $result = $conn->query($sql);
   $Admintest=0;
   $Nazovs=array();

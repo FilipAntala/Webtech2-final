@@ -48,7 +48,7 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }    
     $userMail=$_GET['vykon'];
-    $sql1 = "SELECT meno, priezvisko, email,bydlisko_ulica,bydlisko_obec from user where email=\"$userMail\"";
+    $sql1 = "SELECT meno, priezvisko, email,bydlisko_ulica,bydlisko_obec from  ".USER_TABLE." where email=\"$userMail\"";
     
     $result1 = $conn->query($sql1);
  $NAME="";
@@ -89,7 +89,7 @@ if ($conn->connect_error) {
      echo "<th>priemerná rýchlosť na tréningu v km/h</th>";
      echo "<th>Zobraz trasu na mape</th></tr> </thead>";
    
-$sql = "SELECT  b.type, a.id, a.nazov, c.pridane, c.zaciatok, c.koniec, c.start as GPSstart,c.ciel as GPSciel from trasa a join user b on a.autor = b.id join cvicenie c  on a.id=c.trasa_id where b.email=\"$userMail\" "; 
+$sql = "SELECT  b.type, a.id, a.nazov, c.pridane, c.zaciatok, c.koniec, c.start as GPSstart,c.ciel as GPSciel from trasa a join  ".USER_TABLE." b on a.autor = b.id join cvicenie c  on a.id=c.trasa_id where b.email=\"$userMail\" ";
   
 
      

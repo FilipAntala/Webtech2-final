@@ -24,7 +24,7 @@ if (isset($_GET['user'])) {
     $mylastId = 0;
     $publicLastId = 0;
     $q="select * from ".USER_TABLE." where email='$user'";
-    //echo $q."<br>";
+   // echo $q."<br>";
     $stmt = $db->query($q);
     $item = $stmt->fetch(PDO::FETCH_ASSOC);
     $userStatus=$item['type'];
@@ -36,7 +36,7 @@ if (isset($_GET['user'])) {
         $data=array();
         if($userStatus==0) {
             $querry = "select t.id as id,u.email as email,t.start as start,t.ciel as ciel,t.nazov as nazov,t.mod as `mod`,t.vytvorene as datum from ".TRASA_TABLE." as t join ".USER_TABLE." as u on t.autor=u.id where t.autor=$userId and t.id > $mylastId";
-             //echo $querry."<br>";
+            // echo $querry."<br>";
 
             data_add($mylastId,$querry,1);
                $mylastId = $lastId;

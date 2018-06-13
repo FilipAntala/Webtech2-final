@@ -53,7 +53,7 @@ if ($conn->connect_error) {
 } 
  $userMail=$_GET['trasy'];
 
- $sql = "SELECT b.type, a.id, a.nazov, a.mod, a.start, a.ciel, a.vytvorene, c.start as zaciatokcvika, c.ciel as konieccvika, c.zaciatok, c.koniec, c. pridane from trasa a join user b on a.autor=b.id join cvicenie c on a.id=c.trasa_id where b.email=\"$userMail\"";
+ $sql = "SELECT b.type, a.id, a.nazov, a.mod, a.start, a.ciel, a.vytvorene, c.start as zaciatokcvika, c.ciel as konieccvika, c.zaciatok, c.koniec, c. pridane from trasa a join  ".USER_TABLE." b on a.autor=b.id join cvicenie c on a.id=c.trasa_id where b.email=\"$userMail\"";
 
  
 $result = $conn->query($sql);
@@ -72,7 +72,7 @@ $result = $conn->query($sql);
    $Caskonca=array();
     $Pridane=array();
     $i=0;    
-  $sql1 = "SELECT meno, priezvisko, email,bydlisko_ulica,bydlisko_obec from user where email=\"$userMail\"";
+  $sql1 = "SELECT meno, priezvisko, email,bydlisko_ulica,bydlisko_obec from  ".USER_TABLE." where email=\"$userMail\"";
     
     $result1 = $conn->query($sql1);
  $NAME="";

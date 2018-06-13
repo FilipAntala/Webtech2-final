@@ -18,10 +18,21 @@
     <br>
     <input type="submit">
 </form>
+    <form action="index.php">
+        <input type="submit" value="spat">
+    </form>
 </div>
 <script>
     var source;
-    var user="email57@gmail.com";
+    <?php
+    session_start();
+    if(isset($_SESSION["email"])) {
+        echo 'var user="'.$_SESSION["email"].'";';
+
+    }
+    else header("Location:index.php");
+    ?>
+
     document.getElementById("user_input").value=user;
     var url = "trasa_get.php?user="+user;
     console.log(url);
