@@ -49,7 +49,7 @@ if ($conn->connect_error) {
             $email=$_SESSION["email"];   
            
 
- $sql1 = "SELECT email, type FROM user where email='$email'";
+ $sql1 = "SELECT email, type FROM ".USER_TABLE." where email='$email'";
 $result1 = $conn->query($sql1);
   $Admintest=array();
    $MAILS[$i]=array();      
@@ -71,7 +71,9 @@ if ($result1->num_rows > 0) {
       <button type="submit" name="logout">Odhlasit</button>
       </form>';
       echo "<a href=\"userTabulka.php?trasy=$email\">Zobraz moje trasy</a>";
-      if ($u==2)
+      echo "<a href=\"vytvor_trasu.php\">Pridaj trasu</a>";
+      echo "<a href=\"vytvor_cvicenie.php\">Pridaj trening</a>";
+      if ($u==1)
       echo "<a href=\"AdminTabulka.php?sort=id\">Zobraz všetky trasy</a>";
             }
             else if(isset($_POST['login'])){
@@ -80,10 +82,18 @@ if ($result1->num_rows > 0) {
           $stmt = $db->query("select * from ".USER_TABLE." where email='$user'");
           $item = $stmt->fetch(PDO::FETCH_ASSOC);
           $hash = hash('sha512',$heslo);
-          $pass=$item['pass'];
-          if(strcmp($hash,$pass))echo "ok";
+          if($item["pass"])
+              $pass=$item['pass'];
+          else $pass="10";
+          if(strcmp($hash,$pass)==0){
+
           $_SESSION['email']=$user;
-                header("Location:index.php");
+          $_POST=0;
+          header("Location:index.php");
+
+          }else {$_POST=0;
+              header("Location:index.php");
+          }
          // echo $password."<br>";
           //echo hash('sha512',$heslo)."<br>";
       }else echo '

@@ -31,6 +31,7 @@ $query="INSERT INTO ".CVICENIE_TABLE."(`user_id`,`trasa_id`,`start`,`ciel`,`zaci
 if($db->exec($query)){
     http_response_code(200);
     echo http_response_code(200);
+    header("Location:userTabulka.php?trasy=$email");
 }
 else {
     http_response_code(400);

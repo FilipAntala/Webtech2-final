@@ -27,7 +27,7 @@ else
 	  $data[7] = mysqli_real_escape_string($db,$data[7]);
 	  $data[8] = mysqli_real_escape_string($db,$data[8]);
 	if($f>0){
-		$query = "insert into User (priezvisko,meno,email,pass,type,valid,hash,stredna,stredna_adresa,bydlisko_ulica,psc,bydlisko_obec) values ('$data[1]','$data[2]','$data[3]','$pass','$type','$valid','$hash','$data[4]','$data[5]','$data[6]','$data[7]','$data[8]')";
+		$query = "insert into  ".USER_TABLE." (priezvisko,meno,email,pass,type,valid,hash,stredna,stredna_adresa,bydlisko_ulica,psc,bydlisko_obec) values ('$data[1]','$data[2]','$data[3]','$pass','$type','$valid','$hash','$data[4]','$data[5]','$data[6]','$data[7]','$data[8]')";
 		$result = $db->query($query) or die(mysqli_error($db));
 		echo "Record updated <br />\n";
 		}

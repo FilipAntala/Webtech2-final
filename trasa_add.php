@@ -18,7 +18,7 @@
 // tuke gps  48.151965,17.072995
 include "config.php";
 //print_r(json_encode($_POST));
-$user=$_POST['user'];
+$email=$_POST['user'];
 $mod=$_POST['mod'];
 $nazov=$_POST['nazov'];
 
@@ -32,7 +32,7 @@ try {
 } catch (PDOException $e) {
    die ($e->getMessage());
 }
-$stmt = $db->query("select * from ".USER_TABLE." where email='$user'");
+$stmt = $db->query("select * from ".USER_TABLE." where email='$email'");
 $item = $stmt->fetch(PDO::FETCH_ASSOC);
 //print_r(json_encode($item));
 $user=$item['id'];
@@ -42,6 +42,7 @@ if($mod==1 or $user_status==1) {
    $db->exec($query);
     http_response_code(200);
     echo http_response_code(200);
+    header("Location:userTabulka.php?trasy=$email");
 }
 else {
     http_response_code(401);
