@@ -9,10 +9,15 @@
       /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
          #zobraz {
-          margin-left:50%;
+          margin-left:25%;
       }   
-      
+          #zobraz2 {
+          margin-left:25%;
+      }  
         
+           #zobraz1 {
+          margin-left:15%;
+      }  
         #tabulka {
           margin:1%;
       }        
@@ -48,11 +53,12 @@ if ($conn->connect_error) {
 } 
  $userMail=$_GET['trasy'];
 
- $sql = "SELECT a.id, a.nazov, a.mod, a.start, a.ciel, a.vytvorene, c.start as zaciatokcvika, c.ciel as konieccvika, c.zaciatok, c.koniec, c. pridane from trasa a join user b on a.autor=b.id join cvicenie c on a.id=c.trasa_id where b.email=\"$userMail\"";
+ $sql = "SELECT b.type, a.id, a.nazov, a.mod, a.start, a.ciel, a.vytvorene, c.start as zaciatokcvika, c.ciel as konieccvika, c.zaciatok, c.koniec, c. pridane from trasa a join user b on a.autor=b.id join cvicenie c on a.id=c.trasa_id where b.email=\"$userMail\"";
 
  
 $result = $conn->query($sql);
  $ID=array();
+ $Admintest=0;
  $IDs=array();
   $nazov=array();
   $Mods=array();
@@ -117,7 +123,7 @@ if ($result->num_rows > 0) {
     $Caszaciatku[$i]=$row["zaciatok"];    
    $Caskonca[$i]=$row["koniec"];
     $Pridane[$i]=$row["pridane"];
-     
+      $Admintest=$row["type"];
       echo "<tr><td>" .$IDs[$i]. "</td><td>" ."<a href=\"TrasyTabulka.php?cvicenie=$IDs[$i]\">$nazov[$i]</a>". "</td><td>" . $Mody[$i]."</td><td>" . $Zaciatok[$i]."</td><td>" . $Ciel[$i]. "</td><td>" . $Vytvorene[$i]."</td><td>" . $Zaciatokcvika[$i]."</td><td>" .  $Cielcvika[$i]. "</td><td>" . $Caszaciatku[$i]."</td><td>" .  $Caskonca[$i]. "</td><td>" .  $Pridane[$i]. "</td></tr>"; 
     $i=$i+1;    
     }
@@ -138,8 +144,10 @@ $conn->close();
 
   //echo   "<br><a id=\"zobraz1\" href=\"Trasy.php?trasa=$TrasaID\">Zobraz trasu na mape (najprv je potrebné trasu aktivovať)<a>";
  echo  "<a id=\"zobraz1\" href=\"VykonyTabulka.php?vykon=$userMail\">Zobraz tabuľku výkonov na jednotlivých trasách</a> ";
+  if($Admintest==2)
+  echo "<a id=\"zobraz\" href=\"AdminTabulka.php?sort=id\">Späť na tabuľku všetkých trás</a>";
 ?> 
-  <a id="zobraz" href="AdminTabulka.php?sort=id">Späť na tabuľku všetkých trás</a>
+  <a id="zobraz2" href="index.php">Späť na hlavnú stránku</a>
   
 </body>
 </html>

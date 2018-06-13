@@ -11,7 +11,9 @@
          #zobraz {
           margin-left:20%;
       }   
-      
+            #zobraz2 {
+          margin-left:25%;
+      }  
         #zobraz1 {
           margin-left:15%;
       }   
@@ -95,7 +97,7 @@ $conn->close();
 
   echo   "<br><a id=\"zobraz1\" href=\"Trasy.php?trasa=$TrasaID\">Zobraz trasu na mape (najprv je potrebné trasu aktivovať)<a>";
 ?> 
-  <a id="zobraz" href="AdminTabulka.php?sort=id">Späť na tabuľku všetkých trás<a>
+   <a id="zobraz2" href="index.php">Späť na hlavnú stránku</a>
   
 </body>
 </html>
