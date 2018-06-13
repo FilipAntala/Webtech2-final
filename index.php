@@ -110,7 +110,7 @@ if ($result1->num_rows > 0) {
     <div id="map"></div>
         <?php
 
- $sql = "SELECT * FROM user";
+ $sql = "SELECT * FROM ".USER_TABLE;
 $result = $conn->query($sql);
  $IDs=array();
   
@@ -132,8 +132,8 @@ if ($result->num_rows > 0) {
       $Menos[$i]=$row["meno"];
    $Priezviskos[$i]=$row["priezvisko"];
     $Emails[$i]=$row["email"];
-     $Skolas[$i]=$row["skola"];
-      $SKadresa[$i]=$row["skola_adresa"];
+     $Skolas[$i]=$row["stredna"];
+      $SKadresa[$i]=$row["stredna_adresa"];
         $BYDulica[$i]=$row["bydlisko_ulica"]; 
             $PSC[$i]=$row["psc"]; 
         $MESTA[$i]=$row["bydlisko_obec"]; 
