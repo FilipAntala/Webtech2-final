@@ -2,8 +2,8 @@
 <project version="4">
   <component name="WebServers">
     <option name="servers">
-      <webServer id="4fff7014-c8b7-43a3-a96c-fecad9cb85ad" name="webtech-final" url="http://147.175.98.110">
-        <fileTransfer host="147.175.98.110" port="22" rootFolder="/home/xantalaf/public_html/Webtech2-final" accessType="SFTP">
+      <webServer id="c774a733-8abf-4517-89cb-76b274349c10" name="abc" url="http://147.175.98.127">
+        <fileTransfer host="147.175.98.127" port="22" rootFolder="/home/xboran/public_html/ZadanieFINAL" accessType="SFTP">
           <advancedOptions>
             <advancedOptions dataProtectionLevel="Private" />
           </advancedOptions>
