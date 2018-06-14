@@ -10,7 +10,7 @@
     <label> user:<input type="text" name="user" id="user_input" readOnly ></label>
     <label>trasa:<select name="trasa" id="trasa_select" required></select></label>
     <br>
-    <label> start <input type="text" name="start"  required></label>
+    <label> start <input type="text" name="start" id="startcvicenia"  required></label>
     <label> ciel <input type="text" name="ciel"  required></label>
 <br>
     <label>zaciatok: <input type="datetime-local" name="zaciatok"></label>
@@ -41,7 +41,7 @@
     } else {
         source = new EventSource(url);
         source.onmessage=function listen(e){
-
+           
             var data = JSON.parse(e.data);
             console.log(data);
             var select=document.getElementById("trasa_select");
@@ -49,9 +49,18 @@
                 var option=document.createElement("option");
                 option.value=data[i]['id'];
                 option.text=data[i]['nazov']+" "+data[i]['start']+" - "+data[i]['ciel'];
+               
+               
+                
                 select.add(option);
 
             }
+             var x= document.getElementById("trasa_select").value;
+             
+                document.getElementById("startcvicenia").value= data[x]['start'];
+                
+            
+            
         }
 
     }
