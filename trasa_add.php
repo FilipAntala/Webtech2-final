@@ -42,7 +42,7 @@ if($mod==1 or $user_status==1) {
    $db->exec($query);
     http_response_code(200);
     echo http_response_code(200);
-    header("Location:userTabulka.php?trasy=$email");
+    header("Location:vytvor_cvicenie.php");
 }
 else {
     http_response_code(401);

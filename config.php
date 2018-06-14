@@ -1,7 +1,7 @@
 <?php
-define("DB_HOSTNAME", "localhost");
+define("DB_HOSTNAME", "147.175.98.117/phpmyadmin/");
 define("DB_USERNAME", "root");
-define("DB_PASSWORD", "drobec1551");
+define("DB_PASSWORD", "Drobec1551");
 define("DB_DATABASE", "projekt");
 // mena tabuliek
 define ("USER_TABLE","User");
